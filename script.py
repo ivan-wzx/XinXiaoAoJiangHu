@@ -23,7 +23,7 @@ if __name__ == "__main__":
     print("启动本脚本后请回到游戏全屏界面，本脚本会在每轮一日游完成后自动点确认和继续。")
     print("本纯绿色脚本由玩家*肝die冲鸭*为您开发")
     screenWidth, screenHeight = pydirectinput.size()
-    print("Screen resolution: {}x{}".format(screenWidth, screenHeight))
+    print("[Debug] Screen resolution: {}x{}".format(screenWidth, screenHeight))
     #input("回车确认，确认后该程序会自动最小化")
     #cur_win = pyautogui.getActiveWindow()
     #cur_win.minimize()
@@ -34,6 +34,7 @@ if __name__ == "__main__":
         gray=image.sum(axis=2)/3.0
         left_stripe_intensity = numpy.percentile(gray[:, 10:int(screenWidth*0.1125)],99)
         right_stripe_intensity = numpy.percentile(gray[:, int(screenWidth*0.925):screenWidth-10],99)
+        print("[Debug] left stripe intensity: {}, right stripe intensity: {}".format(left_stripe_intensity, right_stripe_intensity))
         if left_stripe_intensity > 100 or right_stripe_intensity > 100:
             continue
         loc=[int(screenWidth*confirm_loc[1]), int(screenHeight*confirm_loc[0])]
