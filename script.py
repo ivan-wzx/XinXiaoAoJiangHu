@@ -16,7 +16,7 @@ def click(x,y):
 
 
 confirm_loc=[0.761, 0.735]
-#confirm_loc2=[0.633, 0.570]
+confirm_loc2=[0.598, 0.639]
 
 if __name__ == "__main__":
     print("一日游自动代刷脚本设置：模拟器开全屏，使用前请先组好队，设置队伍自动跟随，设置自动攻击，先领好一日游任务。")
@@ -38,9 +38,11 @@ if __name__ == "__main__":
         if left_stripe_intensity > 100 or right_stripe_intensity > 100:
             continue
         loc=[int(screenWidth*confirm_loc[1]), int(screenHeight*confirm_loc[0])]
-        #loc2=[int(screenWidth*confirm_loc2[1]), int(screenHeight*confirm_loc2[0])]
+        loc2=[int(screenWidth*confirm_loc2[1]), int(screenHeight*confirm_loc2[0])]
         try:
             pydirectinput.click(*loc)
+            time.sleep(1)
+            pydirectinput.click(*loc2)
         except Exception as ex:
             print(str(ex))
 
